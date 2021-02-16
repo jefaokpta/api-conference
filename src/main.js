@@ -1,15 +1,18 @@
 const express = require('express')
-const saveConference = require('./service/record.service')
-const app = express()
 const bodyParser = require('body-parser')
-const Conference = require('./model/conference')
-app.use(bodyParser.json())
+const app = express()
 const port = 8000
+app.use(bodyParser.json())
+const saveConference = require('./service/record.service')
+const Conference = require('./model/conference')
 
 
 app.get('/download/:id', (req, res) => {
     Conference.findOne({where: {id: req.params.id}})
-        .then(conference => res.download(`${conference.folder}/${conference.record}`))
+        .then(conference => {
+            if(conference) res.download(`${conference.folder}/${conference.record}`)
+            else res.sendStatus(404)
+        })
 });
 
 app.post('/v1/conferences', (req, res) => {
