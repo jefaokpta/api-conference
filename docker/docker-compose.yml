@@ -1,0 +1,13 @@
+version: "3"
+services:
+  mariadb:
+    image: mariadb
+    environment:
+      - MYSQL_ROOT_PASSWORD=jefao123
+      - MYSQL_DATABASE=vip-conference
+      - MYSQL_USER=jefao
+      - MYSQL_PASSWORD=jefao
+    ports:
+      - 3306:3306
+    volumes:
+    - ./dbdata:/var/lib/mysql
