@@ -1,6 +1,5 @@
 const Conference = require('../model/conference');
 const fs = require('fs');
-const { NUMBER } = require('sequelize');
 
 function saveConference(folderComplete){
   const folder  = `/records/${folderComplete.substr(folderComplete.lastIndexOf('/')+1)}`
@@ -12,7 +11,8 @@ function saveConference(folderComplete){
       url: url,
       record: '',
       folder: folder,
-      recordSize: 0
+      recordSize: 0,
+      dateTime: new Date()
   }
 
   fs.readdir(folder, (err, files) => {
