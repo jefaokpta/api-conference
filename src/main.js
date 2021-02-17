@@ -1,8 +1,8 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
-const port = 8000
 app.use(bodyParser.json())
+const port = 3000
 const saveConference = require('./service/record.service')
 const Conference = require('./model/conference')
 

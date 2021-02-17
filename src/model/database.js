@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize')
 
 const db = new Sequelize('vip-conference', 'jefao', 'jefao', {
-    host: 'localhost',
+    host: 'mariadb',
     dialect: 'mariadb'
   });
 

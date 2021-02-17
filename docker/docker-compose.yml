@@ -7,7 +7,27 @@ services:
       - MYSQL_DATABASE=vip-conference
       - MYSQL_USER=jefao
       - MYSQL_PASSWORD=jefao
-    ports:
-      - 3306:3306
+    networks: 
+      - conference
     volumes:
     - ./dbdata:/var/lib/mysql
+  
+  nodeapp:
+    build: ../
+    environment:
+      - NODE_ENV=production
+    networks: 
+      - conference
+  
+  proxy:
+        image: nginx
+        volumes:
+            - ./conf:/etc/nginx/conf.d/
+            # - ./certs:/etc/nginx/certs/
+        networks:
+            - conference
+        ports:
+            - 8000:80
+
+networks: 
+ conference:
