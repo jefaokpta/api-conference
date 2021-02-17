@@ -18,6 +18,8 @@ services:
       - NODE_ENV=production
     networks: 
       - conference
+    volumes: 
+      - /root/.jitsi-meet-cfg/jibri/recordings:/records
   
   proxy:
         image: nginx

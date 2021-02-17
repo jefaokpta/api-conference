@@ -5,6 +5,7 @@ const Conference = db.define('conferences', {
     url: {type: Sequelize.DataTypes.STRING, allowNull: false},
     folder: {type: Sequelize.DataTypes.STRING, allowNull: false},
     record: {type: Sequelize.DataTypes.STRING, allowNull: false},
+    recordSize: {type: Sequelize.DataTypes.INTEGER}
 })
 
 module.exports = Conference

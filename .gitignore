@@ -1,2 +1,4 @@
 node_modules/
 docker/dbdata/
+._.DS_Store
+docker/._dbdata
