@@ -7,13 +7,17 @@ const saveConference = require('./service/record.service')
 const Conference = require('./model/conference')
 
 
-app.get('/download/:id', (req, res) => {
+app.get('/v1/conferences/download/:id', (req, res) => {
     Conference.findOne({where: {id: req.params.id}})
-        .then(conference => {
-            if(conference) res.download(`${conference.folder}/${conference.record}`)
-            else res.sendStatus(404)
-        })
+        .then(conference => res.download(`${conference.folder}/${conference.record}`))
+        .catch(e => res.sendStatus(404))
 });
+
+app.get('/v1/conferences', (req, res) => {
+  Conference.findAll()
+    .then(conferences => res.json(conferences))
+    .catch(e => res.sendStatus(404))
+})
 
 app.post('/v1/conferences', (req, res) => {
     saveConference(req.body.folder)
