@@ -1,5 +1,6 @@
 const Conference = require('../model/conference');
 const fs = require('fs');
+const rimraf = require('rimraf')
 
 function saveConference(folderComplete){
   const folder  = `/records/${folderComplete.substr(folderComplete.lastIndexOf('/')+1)}`
@@ -14,7 +15,6 @@ function saveConference(folderComplete){
       recordSize: 0,
       dateTime: new Date()
   }
-
   fs.readdir(folder, (err, files) => {
       const record = files.filter(f => f.startsWith(room))[0]
       conference.record = record
@@ -23,4 +23,9 @@ function saveConference(folderComplete){
     });
 }
 
-module.exports = saveConference
+function deleteConferenceFile(conference) {
+  if (!fs.existsSync(conference.folder)) {return}
+  rimraf(conference.folder, () => console.log('Apagado pasta ' + conference.folder))
+}
+
+module.exports = {saveConference, deleteConferenceFile}

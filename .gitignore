@@ -3,3 +3,6 @@ docker/dbdata/
 ._.DS_Store
 docker/._dbdata
 .DS_Store
+src/.DS_Store
+.DS_Store
+
