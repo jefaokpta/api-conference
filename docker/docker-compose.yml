@@ -25,11 +25,11 @@ services:
         image: nginx
         volumes:
             - ./conf:/etc/nginx/conf.d/
-            # - ./certs:/etc/nginx/certs/
+            - /root/.jitsi-meet-cfg/web/acme-certs/meet.vipsolutions.com.br:/etc/nginx/certs/
         networks:
             - conference
         ports:
-            - 8000:80
+            - 8000:443
 
 networks: 
  conference:
