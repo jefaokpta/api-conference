@@ -18,7 +18,7 @@ echo record $record
 
 body="{\"url\":\"$url\",\"folder\":\"$folder\",\"record\":\"$record\"}"
 echo $body
-curl -v -X POST 128.0.0.1:8000/v1/conferences -H 'Content-Type: application/json' -d $body
+curl -v -X POST https://meet.vipsolutions.com.br:8000/v1/conferences -H 'Content-Type: application/json' -d $body
 
 #echo parametros $#
 #
